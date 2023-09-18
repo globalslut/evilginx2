@@ -315,7 +315,7 @@ func (t *Terminal) prepLogs() (string, error) {
 		return "", err
 	}
 	if len(sessions) == 0 {
-		log.Info("no saved sessions found")
+		// log.Info("no saved sessions found")
 		return "", nil
 	}
 
