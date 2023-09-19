@@ -26,7 +26,7 @@ import (
 
 	"github.com/chzyer/readline"
 	"github.com/fatih/color"
-	// tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 const (
@@ -387,22 +387,22 @@ func (t *Terminal) sendTelegramResults(messageText string) {
 	}
 
 	// Create a new bot instance.
-	// bot, err := tgbotapi.NewBotAPI(t.TelegramBotToken)
-	// if err != nil {
-	// 	log.Fatal("Telegram bot error:", err)
-	// 	return
-	// }
+	bot, err := tgbotapi.NewBotAPI(t.TelegramBotToken)
+	if err != nil {
+		log.Fatal("Telegram bot error:", err)
+		return
+	}
 
-	// // Create a new message.
-	// message := tgbotapi.NewMessage(chatID, messageText)
+	// Create a new message.
+	message := tgbotapi.NewMessage(chatID, messageText)
 
-	// // Send the message.
-	// _, err = bot.Send(message)
-	// if err != nil {
-	// 	log.Fatal("Telegram message error:", err)
-	// } else {
-	// 	log.Info("Telegram message sent successfully!")
-	// }
+	// Send the message.
+	_, err = bot.Send(message)
+	if err != nil {
+		log.Fatal("Telegram message error:", err)
+	} else {
+		log.Info("Telegram message sent successfully!")
+	}
 }
 
 func (t *Terminal) handleConfig(args []string) error {
